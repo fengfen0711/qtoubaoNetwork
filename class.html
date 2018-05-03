@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>趣投保</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/officialNetwork_item.css"/>
+		<link rel="stylesheet" type="text/css" href="css/com.css"/>
+	</head>
+	<body>
+		<div class="navBoxZ1"></div>
+		<div id="" class="officialNetwork_div_all">
+			<p class="officialNetwork_p_title">首页  /  保险课堂</p>
+				<div id="" code="0"  class="officialNetwork_div_item officialNetwork_div_first">
+					<img src="img/11.png" class="officialNetwork_img_item"/>
+					<div id="" class="officialNetwork_div_right">
+						<p class="officialNetwork_p_name">你真的不怕倾家荡产吗？</p>
+						<p class="officialNetwork_p_content">前些日子和老同学一起吃饭，聊天之际，同学的朋友听闻我是做保险的，便随意的说了句：“你们这行都是骗钱的！”，突然地一句话让我感觉很不解，但我还是温和地问他：“你为什么会......</p>
+						<p class="officialNetwork_p_time">发布时间：2018-03-05</p>
+					</div>
+				</div>
+				<div id="" code="1" class="officialNetwork_div_item">
+					<img src="img/12.png" class="officialNetwork_img_item"/>
+					<div id="" class="officialNetwork_div_right">
+						<p class="officialNetwork_p_name">很简单！这样投保就对了</p>
+						<p class="officialNetwork_p_content">人从出生到长大，会获得很多财富，若不懂得管理财富，遭遇财产损失，就只能自己吃亏。保险就是一种科学的管理财富的方式，不同的人根据年龄、性别、身体状况等，选择适......</p>
+						<p class="officialNetwork_p_time">发布时间：2018-02-14</p>
+					</div>
+				</div>
+				<div id="" code="2" class="officialNetwork_div_item">
+					<img src="img/13.png" class="officialNetwork_img_item"/>
+					<div id="" class="officialNetwork_div_right">
+						<p class="officialNetwork_p_name">我该如何购买保险？</p>
+						<p class="officialNetwork_p_content">我是否需要购买保险？保险到底有什么作用？我该如何购买保险？相信这些是很多初期接触保险的人，都会提出的顾虑与疑问......</p>
+						<p class="officialNetwork_p_time">发布时间：2018-01-03</p>
+					</div>
+				</div>
+		</div>
+		<div class="circle">
+			<img class="circle_img" src="img/Oval_white.png"/>
+		</div>
+		<div class="footerZ">
+			
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.officialNetwork_div_item').on('click',function(){
+					var s=$(this).attr('code')
+					window.location.href="officialNetwork_details.html?list="+s
+				})
+				$('.navBoxZ1').load('com.html #header',function(){
+					//判断是否是登录状态
+					if (sessionStorage.getItem("regTel")) {
+						console.log(sessionStorage.getItem("regTel"))
+						$(".userPhone").html(sessionStorage.getItem("regTel"))
+						$(".navInfo1").addClass("disnone");
+						$(".navInfo2").removeClass("disnone");
+					}
+					
+					//退出登录
+					$(".quitBtn").click(function () {
+						var userQuitInfo = {
+							'loginNme' : sessionStorage.getItem("regTel"),
+							'token' : sessionStorage.getItem('token')
+						}
+						var userQuit = JSON.stringify(userQuitInfo);
+						//退出登录接口
+						quitAjax (userQuit);
+					})
+					function quitAjax (data) {
+						$.ajax({
+							type : 'post',
+							url : URL1 + 'logout_jsons.tml',
+							data : data,
+							dataType : 'json',
+							cache : false,
+							error : function(data) {
+								console.log(data);
+							},
+							success : function(data) {
+								console.log(data);
+								sessionStorage.removeItem("regTel")
+								sessionStorage.removeItem("token")
+								$(".userPhone").html("");
+								$(".navInfo2").addClass("disnone");
+								$(".navInfo1").removeClass("disnone");
+								window.open("login_register.html","_self");
+							}
+						});
+						
+					}
+					$('.one').removeClass('selectedLi')
+					$('.one').find("span.borderBottom").removeClass("selectedBorderBottom");
+					$('.three').addClass('selectedLi')
+					$('.three').find("span.borderBottom").addClass("selectedBorderBottom");
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+				$('.footerZ').load('com.html #footer',function(){
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+			})
+		</script>
+	</body>
+</html>

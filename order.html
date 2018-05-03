@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/com.css"/>
+		<link rel="stylesheet" type="text/css" href="css/order.css"/>
+	</head>
+	<body>
+		<div class="navBoxZ1"></div>
+		<div class="content-w">
+			<p class="title">订单详情</p>
+			<div class="content">
+				<div class="center">
+					<p class="list">
+						<span class="left1">产品名称：</span>
+						<span class="right1 prodName"></span>
+					</p>
+					<p class="list">
+						<span class="left1">订单编号：</span>
+						<span class="right1 orderCode"></span>
+					</p>
+					<p class="list">
+						<span class="left1">订单状态：</span>
+						<span class="right1 orderType"></span>
+					</p>
+					<p class="list">
+						<span class="left1">订单生成日期：</span>
+						<span class="right1 orderDate"></span>
+					</p>
+					<p class="border"></p>
+					<p class="list">
+						<span class="left1">投保人姓名：</span>
+						<span class="right1 aInsureName "></span>
+					</p>
+					<p class="list">
+						<span class="left1">被保人姓名：</span>
+						<span class="right1 bInsureName"></span>
+					</p>
+					<p class="list">
+						<span class="left1">保险期限：</span>
+						<span class="right1"><span class="color1">起：</span><span class="beginTime"></span></span>
+					</p>
+					<p class="list">
+						<span class="left1"></span>
+						<span class="right1"><span class="color2">止：</span><span class="endTime"></span></span>
+					</p>
+					<p class="money"><span class="money_txt">保额：</span><span class="premium">&yen;</span></p>
+				</div>
+			</div>
+		</div>
+		<div class="circle">
+			<img class="circle_img" src="img/Oval_white.png"/>
+		</div>
+		<div class="footerZ">
+			
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.navBoxZ1').load('com.html #header',function(){
+					//判断是否是登录状态
+					if (sessionStorage.getItem("regTel")) {
+						console.log(sessionStorage.getItem("regTel"))
+						$(".userPhone").html(sessionStorage.getItem("regTel"))
+						$(".navInfo1").addClass("disnone");
+						$(".navInfo2").removeClass("disnone");
+					}
+					
+					//退出登录
+					$(".quitBtn").click(function () {
+						var userQuitInfo = {
+							'loginNme' : sessionStorage.getItem("regTel"),
+							'token' : sessionStorage.getItem('token')
+						}
+						var userQuit = JSON.stringify(userQuitInfo);
+						//退出登录接口
+						quitAjax (userQuit);
+					})
+					function quitAjax (data) {
+						$.ajax({
+							type : 'post',
+							url : URL1 + 'logout_jsons.tml',
+							data : data,
+							dataType : 'json',
+							cache : false,
+							error : function(data) {
+								console.log(data);
+							},
+							success : function(data) {
+								console.log(data);
+								sessionStorage.removeItem("regTel")
+								sessionStorage.removeItem("token")
+								$(".userPhone").html("");
+								$(".navInfo2").addClass("disnone");
+								$(".navInfo1").removeClass("disnone");
+								window.open("login_register.html","_self");
+							}
+						});
+						
+					}
+					$('.one').removeClass('selectedLi ')
+					$('.one').find("span.borderBottom").removeClass("selectedBorderBottom");
+					$('.two1').addClass('selectedLi')
+					$('.two1').find("span.borderBottom").addClass("selectedBorderBottom");
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+				$('.footerZ').load('com.html #footer',function(){
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+				function getdatalist(){
+					var str={
+					   "id":$.getUrlParam('id')
+					}
+					var data=JSON.stringify(str)
+					 console.log(data)
+					$.ajax({
+						url:URL1+'query_web_prod_detail_jsons.tml',
+						type:"POST",
+						data:data,
+						success:function(res){
+							var data=res.output;
+							console.log(data)
+							$('.prodName').html(data.prodName)
+							$('.orderCode').html($.getUrlParam('id'))
+							$('.orderType').html("待支付")
+							$('.orderDate').html(data.orderDate)
+							$('.aInsureName').html(data.aInsureName)
+							$('.bInsureName').html(data.bInsureName)
+							$('.beginTime').html(data.beginTime)
+							$('.endTime').html(data.endTime)
+							if(data.premium!=undefined){
+								$('.premium').html("&yen;"+data.premium+".00元")
+							}else{
+								$('.premium').html()
+							}
+							
+							
+						},
+						error:function(){
+							console.log('订单详情错误')
+						}
+					})
+				}
+				getdatalist()
+			})
+		</script>
+	</body>
+</html>

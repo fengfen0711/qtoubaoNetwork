@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>关于我们</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/officialNetwork_my.css" />
+		<link rel="stylesheet" type="text/css" href="css/com.css"/>
+	</head>
+
+	<body>
+		<div class="navBoxZ1"></div>
+		<div id="" class="officialNetwork_my_div_all">
+			<img src="img/officialNetwork_my_banner.png" class="officialNetwork_my_img_title" />
+			<p class="officialNetwork_my_p_title">关于我们</p>
+			<p class="officialNetwork_my_p_bg"></p>
+			<div id="" class="officialNetwork_my_div_content">
+				<p class="officialNetwork_my_p_content">深圳市趣投保科技有限公司成立于2017年12月，是一家致力于保险领域互联网模式探索的互联网保险科技公司，由被誉为“最熟悉中国银行业的IT专家”的深圳市长亮科技股份有限公司（A股代码：300348）出资成立，公司运营总部设在北京。</br>
+					公司长期专注于保险行业研究与互联网化运营，目标成为行业内最专业的互联网保险技术研发与运营团队之一。致力于为保险代理人、投保人提供更便捷、更高效、更有价值的运营服务，联合各大保险公司及互联网平台达成战略合作，力求成为更懂您的签单伴侣。
+				</p>
+				<img src="img/officialNetwork_my_my.png" class="officialNetwork_my_img_right" />
+			</div>
+			<div id="" class="officialNetwork_my_div_new">
+				<p class="officialNetwork_my_p_title">新闻动态</p>
+				<p class="officialNetwork_my_p_bg officialNetwork_my_div_first"></p>
+				<div id="" class="officialNetwork_my_div_cent ">
+						<div id="" class="officialNetwork_my_div_all_new" code="0">
+							<div id="" class="officialNetwork_my_div_cent_itemleft">
+								<img src="img/1.png" class="officialNetwork_my_img_dl" />
+							</div>
+							<p class="officialNetwork_my_p_name">你真的不怕倾家荡产吗？</p>
+							<p class="officialNetwork_my_p_namecontent">前些日子和老同学一起吃饭......</p>
+						</div>
+						<div id="" code="1" class="officialNetwork_my_div_all_new officialNetwork_my_div_all_newfirst">
+							<div id="" class="officialNetwork_my_div_cent_itemleft">
+								<img src="img/2.png" class="officialNetwork_my_img_dl" />
+							</div>
+							<p class="officialNetwork_my_p_name">很简单！这样投保就对了</p>
+							<p class="officialNetwork_my_p_namecontent">人从出生到长大，会获得很多财富......</p>
+						</div>
+						<div id="" code="2" class="officialNetwork_my_div_all_new officialNetwork_my_div_all_newfirst">
+							<div id="" class="officialNetwork_my_div_cent_itemleft">
+								<img src="img/3.png" class="officialNetwork_my_img_dl" />
+							</div>
+							<p class="officialNetwork_my_p_name">我该如何购买保险？</p>
+							<p class="officialNetwork_my_p_namecontent">我是否需要购买保险？......</p>
+						</div>
+					
+					<!--<div id="" class="officialNetwork_my_p_add">
+						查看更多 >>
+					</div>-->
+				</div>
+
+			</div>
+			<p class="officialNetwork_my_p_title">发展历程</p>
+			<p class="officialNetwork_my_p_bg officialNetwork_my_div_first"></p>
+			<img src="img/officialNetwork_my_time.png" class="officialNetwork_my_img_center" />
+			<div class="img_w">
+				<p class="officialNetwork_my_p_title">合作伙伴</p>
+				<p class="officialNetwork_my_p_bg officialNetwork_my_div_first"></p>
+				<img src="img/officialNetwork_my_hz.png" class="officialNetwork_my_img_hz" />
+				<!--<div id="" class="officialNetwork_my_p_addnew">
+					查看更多 >>
+				</div>-->
+			</div>
+			<p class="officialNetwork_my_p_title">联系我们</p>
+			<p class="officialNetwork_my_p_bg officialNetwork_my_div_first"></p>
+			<div id="" class="officialNetwork_my_div_del">
+				<img src="img/officialNetwork_my_map.png" class="officialNetwork_my_img_map" />
+				<div id="" class="officialNetwork_my_div_delcontent">
+					<p class="officialNetwork_my_p_delname">深圳市趣投保科技有限公司</p>
+					<p class="officialNetwork_my_p_deladd">北京市东城区东四十条南新仓商务大厦B幢822</p>
+					<p class="officialNetwork_my_p_deldel">电话：0571-28200571</p>
+					<p class="officialNetwork_my_p_deeml">Email： sunjf@sunline.cn</p>
+				</div>
+			</div>
+		</div>
+		<div class="circle">
+			<img class="circle_img" src="img/Oval_white.png"/>
+		</div>
+		<div class="footerZ">
+			
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.navBoxZ1').load('com.html #header',function(){
+					$('.officialNetwork_my_div_all_new').on('click',function(){
+						var s=$(this).attr('code')
+						window.location.href="officialNetwork_details.html?list="+s
+					})
+					//判断是否是登录状态
+					if (sessionStorage.getItem("regTel")) {
+						console.log(sessionStorage.getItem("regTel"))
+						$(".userPhone").html(sessionStorage.getItem("regTel"))
+						$(".navInfo1").addClass("disnone");
+						$(".navInfo2").removeClass("disnone");
+					}
+					
+					//退出登录
+					$(".quitBtn").click(function () {
+						var userQuitInfo = {
+							'loginNme' : sessionStorage.getItem("regTel"),
+							'token' : sessionStorage.getItem('token')
+						}
+						var userQuit = JSON.stringify(userQuitInfo);
+						//退出登录接口
+						quitAjax (userQuit);
+					})
+					function quitAjax (data) {
+						$.ajax({
+							type : 'post',
+							url : URL1 + 'logout_jsons.tml',
+							data : data,
+							dataType : 'json',
+							cache : false,
+							error : function(data) {
+								console.log(data);
+							},
+							success : function(data) {
+								console.log(data);
+								sessionStorage.removeItem("regTel")
+								sessionStorage.removeItem("token")
+								$(".userPhone").html("");
+								$(".navInfo2").addClass("disnone");
+								$(".navInfo1").removeClass("disnone");
+								window.open("login_register.html","_self");
+							}
+						});
+						
+					}
+					$('.one').removeClass('selectedLi ')
+					$('.one').find("span.borderBottom").removeClass("selectedBorderBottom");
+					$('.four').addClass('selectedLi')
+					$('.four').find("span.borderBottom").addClass("selectedBorderBottom");
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+				$('.footerZ').load('com.html #footer',function(){
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订单</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/percent_center.css" />
+		<link rel="stylesheet" type="text/css" href="css/orderdetail.css" />
+		<link rel="stylesheet" type="text/css" href="css/com.css"/>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="navBoxZ1"></div>
+		<div class="percent_all">
+			<p class="percent_p">个人中心</p>
+			<div class="percent_clean">
+				<div id="" class="percent_text">
+					<input type="button" name="" id="" value="我的信息" style="color: #222222;" class="percent_btn1 order_btn1"/>
+					<input type="button" name="" id="" value="我的订单" style="color: #ff5d65;" class="percent_btn1 order_btn2" onclick="my_order()" />
+				</div>
+				<div class="percent_detail">
+					<div class="order_title">
+						<input type="button" name="" id="" value="全部订单" class="order_btn order_all" onclick="" />
+						<input type="button" name="" id="" value="待支付" class="order_btn order_all1" onclick="" />
+						<input type="button" name="" id="" value="待承保" class="order_btn order_all2" onclick="" />
+					</div>
+					<div class="order_descri">
+						<div class="order_tou">
+							<label class="order_you order_mess">投保信息</label>
+							<label class="order_you order_midd">保障期限</label>
+							<label class="order_you order_money">保费（元）</label>
+							<label class="order_you order_own">推广费收入</label>
+							<label class="order_you order_statiu">交易状态</label>
+						</div>
+						<div class="order_content">
+							<!--<div class="order_intel">
+								<div class="order_title_first">
+									<label class="order_bao order_mile">宏康人寿</label>
+									<label class="order_bao order_kill">订单编号:INDS23409620341</label>
+									<label class="order_bao order_time">2014-04-26 14:23:53</label>
+								</div>
+								<div class="order_list">
+									<div class="order_div">
+										<img class="order_img" />
+										<div class="order_span">
+											<p class="order_p_bao">宏康红丽相传终身寿险</p>
+											<p class="order_name">投保人:松桥北奈</p>
+											<p class="order_name1">被保人:松桥北奈</p>
+										</div>
+										<div class="order_span">
+											<p class="order_star">起：2018-04-26</p>
+											<p class="order_star">止：2018-04-26</p>
+										</div>
+										<div class="order_span1">
+											<p class="order_star1">￥13333000000</p>
+
+										</div>
+										<div class="order_span1">
+											<p class="order_star1">￥13333000000</p>
+
+										</div>
+										<div class="order_span">
+											<p class="order_p_close">已关闭</p>
+											<p class="order_name_detail">订单详情</p>
+											<p class="order_name_buy">再次购买</p>
+										</div>
+									</div>
+								</div>
+							</div>-->
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="circle">
+			<img class="circle_img" src="img/Oval_white.png"/>
+		</div>
+		<div class="footerZ">
+			
+		</div>
+		<script src="js/orderdetail.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.navBoxZ1').load('com.html #header',function(){
+					//判断是否是登录状态
+					if (sessionStorage.getItem("regTel")) {
+						console.log(sessionStorage.getItem("regTel"))
+						$(".userPhone").html(sessionStorage.getItem("regTel"))
+						$(".navInfo1").addClass("disnone");
+						$(".navInfo2").removeClass("disnone");
+					}
+					
+					//退出登录
+					$(".quitBtn").click(function () {
+						var userQuitInfo = {
+							'loginNme' : sessionStorage.getItem("regTel"),
+							'token' : sessionStorage.getItem('token')
+						}
+						var userQuit = JSON.stringify(userQuitInfo);
+						//退出登录接口
+						quitAjax (userQuit);
+					})
+					function quitAjax (data) {
+						$.ajax({
+							type : 'post',
+							url : URL1 + 'logout_jsons.tml',
+							data : data,
+							dataType : 'json',
+							cache : false,
+							error : function(data) {
+								console.log(data);
+							},
+							success : function(data) {
+								console.log(data);
+								sessionStorage.removeItem("regTel")
+								sessionStorage.removeItem("token")
+								$(".userPhone").html("");
+								$(".navInfo2").addClass("disnone");
+								$(".navInfo1").removeClass("disnone");
+								window.open("login_register.html","_self");
+							}
+						});
+						
+					}
+					$('.one').removeClass('selectedLi ')
+					$('.one').find("span.borderBottom").removeClass("selectedBorderBottom");
+//					$('.two1').addClass('selectedLi')
+//					$('.two1').find("span.borderBottom").addClass("selectedBorderBottom");
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+				$('.footerZ').load('com.html #footer',function(){
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+			})
+		</script>
+	</body>
+
+</html>

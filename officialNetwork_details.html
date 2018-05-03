@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>详情</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/officialNetwork_details.css"/>
+		<link rel="stylesheet" type="text/css" href="css/com.css"/>
+	</head>
+	<body>
+		<div class="navBoxZ1"></div>
+		<div id="" class="officialNetwork_details_div_all">
+			<p class="officialNetwork_details_p_title">首页  /  保险课堂  /  课程详情</p>
+			<div id="" class="officialNetwork_details_div_content">
+				<p class="officialNetwork_details_p_content"></p>
+				<div id="" class="officialNetwork_details_div_details">
+					
+				</div>
+			</div>
+		</div>
+		<div class="circle">
+			<img class="circle_img" src="img/Oval_white.png"/>
+		</div>
+		<div class="footerZ">
+			
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var s=$.getUrlParam('list')
+				console.log(s)
+				if(s==0){
+					$('.officialNetwork_details_p_content').html("你真的不怕倾家荡产吗？")
+				}else if(s==1){
+					$('.officialNetwork_details_p_content').html("很简单！这样投保就对了")
+				}else{
+					$('.officialNetwork_details_p_content').html("我该如何购买保险？")
+				}
+				$.ajax({
+					url:'data/news.json',
+					type:"GET",
+					success:function(res){
+						console.log(res)
+						$('.officialNetwork_details_div_details').html(res[s].data)
+					}
+				})
+				$('.navBoxZ1').load('com.html #header',function(){
+					//判断是否是登录状态
+					if (sessionStorage.getItem("regTel")) {
+						console.log(sessionStorage.getItem("regTel"))
+						$(".userPhone").html(sessionStorage.getItem("regTel"))
+						$(".navInfo1").addClass("disnone");
+						$(".navInfo2").removeClass("disnone");
+					}
+					
+					//退出登录
+					$(".quitBtn").click(function () {
+						var userQuitInfo = {
+							'loginNme' : sessionStorage.getItem("regTel"),
+							'token' : sessionStorage.getItem('token')
+						}
+						var userQuit = JSON.stringify(userQuitInfo);
+						//退出登录接口
+						quitAjax (userQuit);
+					})
+					function quitAjax (data) {
+						$.ajax({
+							type : 'post',
+							url : URL1 + 'logout_jsons.tml',
+							data : data,
+							dataType : 'json',
+							cache : false,
+							error : function(data) {
+								console.log(data);
+							},
+							success : function(data) {
+								console.log(data);
+								sessionStorage.removeItem("regTel")
+								sessionStorage.removeItem("token")
+								$(".userPhone").html("");
+								$(".navInfo2").addClass("disnone");
+								$(".navInfo1").removeClass("disnone");
+								window.open("login_register.html","_self");
+							}
+						});
+						
+					}
+					$('.one').removeClass('selectedLi')
+					$('.one').find("span.borderBottom").removeClass("selectedBorderBottom");
+					$('.three').addClass('selectedLi')
+					$('.three').find("span.borderBottom").addClass("selectedBorderBottom");
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+				$('.footerZ').load('com.html #footer',function(){
+				//nav 
+					$(".navInfo li").mouseover(function(){
+						$(this).addClass("navInfoLi");
+						$(this).siblings().removeClass("navInfoLi");
+						$(this).find("span.borderBottom").addClass("borderBottomSpan");
+						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
+					})
+					$(".navInfo li").mouseout(function(){
+						setTimeout(function() {
+							$(this).removeClass("navInfoLi");
+							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
+						}, 400)
+					})
+				})
+			})
+		</script>
+	</body>
+</html>

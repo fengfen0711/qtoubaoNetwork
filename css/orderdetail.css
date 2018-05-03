@@ -1,0 +1,144 @@
+.order_title{
+	height: 60px;
+	border-bottom:1px solid #969696;
+	
+}
+.order_btn{
+	font-size: 20px;
+	color: ff5d65;
+	line-height: 60px;
+}
+.order_all{
+	margin-left: 40px;
+	color: #ff5d65;
+}
+.order_all1{
+	margin-left: 80px;
+	/*color: #222222;*/
+}
+.order_all2{
+	margin-left: 80px;
+	/*color: #222222;*/
+}
+.order_descri{
+	margin-left: 40px;
+	margin-right: 40px;
+}
+.order_tou{
+	height: 40px;
+	border-bottom: 1px solid #969696;
+}
+.order_you{
+	font-size: 14px;
+	color: #222222;
+	line-height: 40px;
+}
+.order_mess{
+	margin-left: 125px;
+}
+.order_midd{
+	margin-left: 150px;
+}
+.order_money{
+	margin-left: 70px;
+}
+.order_own{
+	margin-left: 40px;
+}
+.order_statiu{
+	margin-left: 45px;
+}
+.order_intel{
+	margin-top: 15px;
+}
+.order_title_first{
+	border-radius: 8px 8px 0 0;
+	background-color: #e0e5fe;
+	height: 30px;
+}
+.order_bao{
+	line-height: 30px;
+	font-size: 12px;
+	color: #969696;
+}
+.order_mile{
+	margin-left: 15px;
+}
+.order_time{
+	margin-left: 50px;
+}
+.order_list{
+	height: 113px;
+	border-radius: 0 0 8px 8px;
+	background-color: #fafafa;
+}
+.order_img{
+	width: 80px;
+	height: 80px;
+	border-radius: 6px;
+	vertical-align: bottom;
+	margin-left: 15px;
+}
+.order_span{
+	display: inline-block;
+	margin-left: 15px;
+	margin-top: 15px;
+}
+.order_span1{
+	display: inline-block;
+	margin-left: 15px;
+}
+.order_div{
+	width: 100%;
+	clear: both;
+
+	
+}
+.order_p_bao{
+	font-size: 16px;
+	font-weight: bold;
+}
+.order_name{
+	font-size: 14px;
+	margin-top: 15px;
+	color: #555555;
+}
+.order_name1{
+	font-size: 14px;
+	margin-top:5px;
+	color: #555555;
+}
+.order_star{
+	font-size: 14px;
+	color: #555555;
+}
+.order_star1{
+	font-size: 14px;
+	color: #555555;
+}
+.order_p_close{
+	font-size: 14px;
+}
+.order_name_detail{
+	font-size: 14px;
+	color: #70a6ff;
+	margin-top: 12px;
+}
+.order_name_buy{
+	font-size: 14px;
+	color: #ff7076;
+	margin-top: 8px;
+}
+.circle{
+	width: 100%;
+}
+.circle_img{
+    width: 100%;
+	position: relative;
+	display: block;
+	top: 94px;
+    z-index: -1
+}
+body{
+	background: #F0F0F0;
+}
