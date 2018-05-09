@@ -28,26 +28,22 @@ function scrollTop() {
 	var bClear = true;
 	console.log(h)
 	
-//	obj.onclick = function(){
-		timer = setInterval(function(){
-			bClear = true;
-			var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-			var iSpeed = Math.floor(-h/10);
-			console.log(iSpeed)
-			console.log(scrolltop)
-			if(scrolltop >= h){
-				clearInterval(timer);
-			}
-			document.documentElement.scrollTop = document.body.scrollTop = scrolltop - iSpeed;
-		},50);
-			
-		window.onscroll = function(){
-			if(!bClear){
-				clearInterval(timer);
-			}
-			bClear = false;
+	timer = setInterval(function(){
+		bClear = true;
+		var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+		var iSpeed = Math.floor(-h/10);
+		if(scrolltop >= h){
+			clearInterval(timer);
 		}
-//	}
+		document.documentElement.scrollTop = document.body.scrollTop = scrolltop - iSpeed;
+	},50);
+		
+	window.onscroll = function(){
+		if(!bClear){
+			clearInterval(timer);
+		}
+		bClear = false;
+	}
 }
 
 //input
@@ -235,7 +231,7 @@ function authCode () {
 		if ($("#regBoxTel").val() != "") {
 			if (testTel($("#regBoxTel"))) {
 				var brokerTelInfo = {
-					"brokerMobile":$("#regBoxTel").val()
+					"phoneNo":$("#regBoxTel").val()
 				}
 				var brokerTelN = JSON.stringify(brokerTelInfo);
 				brokerTel (brokerTelN);
@@ -252,9 +248,10 @@ function authCode () {
 function brokerTel (tel) {
 	$.ajax({
 		type : 'post',
-		url : URL1 + 'query_broker_mobile_jsons.tml',
+		url : URL1 + 'sso/validatePhone',
 		data : tel,
 		dataType : 'json',
+		contentType: 'application/json',
 		cache : false,
 		error : function(data) {
 			console.log(data);
@@ -263,17 +260,20 @@ function brokerTel (tel) {
 			console.log(data);
 			var dataCode = data.code;
 			if (dataCode == "SYS_S_000") {
+				var myDate = new Date().getTime();
+					
 				var mobileInfo = {
-					"groupCode":"",
+					"groupCode":"QTB",
 					"sceneCode":"registerSms",
-					"exSeq":"",
-					"exSystem":"",
-					"sendWhen":"",
+					"exSeq":myDate,
+					"exSystem":"QTBNet",
+					"sendWhen":"I",
 					"mobile":$("#regBoxTel").val(),
 					"param":{
 					}
 				}
 				var mobile = JSON.stringify(mobileInfo);
+				console.log(mobile)
 				getCode (mobile);
 				//倒计时
 				var countdown = 60;
@@ -307,9 +307,10 @@ function brokerTel (tel) {
 function getCode (mobile) {
 	$.ajax({
 		type : 'post',
-		url : URL1 + 'send_code_sms_jsons.tml',
+		url : URL1 + 'sms/sendsmscode',
 		data : mobile,
 		dataType : 'json',
+		contentType: 'application/json',
 		cache : false,
 		error : function(data) {
 			console.log(data);
@@ -325,7 +326,7 @@ function selectToRegNext () {
 	$(".registerBox_nextBtn").click(function(){
 		var telCodeInfo = {
 			"mobile":$("#regBoxTel").val(),
-			"exSystem":"",
+			"exSystem":"QTBNet",
 			"code":$("#regBoxCode").val()
 		}
 		var telCode = JSON.stringify(telCodeInfo);
@@ -337,7 +338,8 @@ function selectToRegNext () {
 function isAuthCode (telCode) {
 	$.ajax({
 		type : 'post',
-		url : URL1 + 'verify_code_sms_jsons.tml',
+		url : URL1 + 'sms/validatesmscode',
+		contentType: 'application/json',
 		data : telCode,
 		dataType : 'json',
 		cache : false,
@@ -365,8 +367,9 @@ function selectToRegster () {
 	$(".registerBox_registerBtn").click(function(){
 		var registerInfo = {
 			"loginNme": sessionStorage.getItem('regTel'),
+			"exSystem": "QTBNet",
 			"loginType": "B",
-			"code": sessionStorage.getItem('regCode'),
+			"smsCode": sessionStorage.getItem('regCode'),
 			"loginPwd": $("#regBoxPas1").val()
 		}
 		var register = JSON.stringify(registerInfo);
@@ -378,9 +381,10 @@ function selectToRegster () {
 function registerAjax (register) {
 	$.ajax({
 		type : 'post',
-		url : URL1 + 'register_jsons.tml',
+		url : URL1 + 'sso/doregister',
 		data : register,
 		dataType : 'json',
+		contentType: 'application/json',
 		cache : false,
 		error : function(data) {
 			console.log(data);
@@ -419,9 +423,10 @@ function selectToLogin () {
 function loginAjax (login) {
 	$.ajax({
 		type : 'post',
-		url : URL1 + 'login_jsons.tml',
+		url : URL1 + 'sso/dologin',
 		data : login,
 		dataType : 'json',
+		contentType: 'application/json',
 		cache : false,
 		error : function(data) {
 			console.log(data);

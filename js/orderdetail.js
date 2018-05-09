@@ -17,9 +17,10 @@ $(function() {
 			console.log(order_data)
 			$.ajax({
 				type: 'post',
-				url: URL1 + 'query_web_prod_list_jsons.tml',
+				url: URL1 + 'cnt/order/page',
 				data: order_data,
 				dataType: 'json',
+				contentType: 'application/json',
 				cache: false,
 				success: function(data) {
 					console.log(data);
@@ -92,9 +93,10 @@ $(function() {
 				console.log(order_data)
 				$.ajax({
 					type: 'post',
-					url: URL1 + 'query_web_prod_list_jsons.tml',
+					url: URL1 + 'cnt/order/page',
 					data: order_data,
 					dataType: 'json',
+					contentType: 'application/json',
 					cache: false,
 					success: function(data) {
 						console.log(data);
@@ -162,9 +164,10 @@ $(function() {
 				console.log(order_data)
 				$.ajax({
 					type: 'post',
-					url: URL1 + 'query_web_prod_list_jsons.tml',
+					url: URL1 + 'cnt/order/page',
 					data: order_data,
 					dataType: 'json',
+					contentType: 'application/json',
 					cache: false,
 					success: function(data) {
 						console.log(data);
@@ -228,9 +231,10 @@ $(function() {
 				console.log(order_data)
 				$.ajax({
 					type: 'post',
-					url: URL1 + 'query_web_prod_list_jsons.tml',
+					url: URL1 + 'cnt/order/page',
 					data: order_data,
 					dataType: 'json',
+					contentType: 'application/json',
 					cache: false,
 					success: function(data) {
 						console.log(data);

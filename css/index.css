@@ -58,7 +58,7 @@
 
 .navBoxZ {
 	width: 100%;
-	height: 420px;
+	height: 370px;
 }
 .navBoxZ1 {
 	display: none;
@@ -67,7 +67,7 @@
 	left: 0;
 	z-index: 99999;
 	width: 100%;
-	height: 92px;
+	height: 96px;
 	background: #FFFFFF;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
 }
@@ -76,7 +76,7 @@
 }
 .navBox {
 	width: 1200px;
-	height: 92px;
+	height: 96px;
 	margin: 0 auto;
 	font-size: 20px;
 	color: #FEFEFE;
@@ -93,7 +93,7 @@
 }
 .loginInfoBox {
 	width: 196px;
-	height: 92px;
+	height: 96px;
 	padding: 32px 0;
 	font-size: 20px;
 	text-align: right;
@@ -308,6 +308,72 @@
 	top: -200px;
 	z-index: 999;
 }
+@media screen and (max-width: 1200px) {
+	.bannerBox {
+		margin-top: 200px;
+	}
+	#bannerBoxz {
+		min-height: 920px;
+	}
+	.navBoxZ {
+		height: 250px;
+	}
+}
+@media screen and (min-width: 1200px) and (max-width: 1366px) {
+	.bannerBox {
+		margin-top: 220px;
+	}
+	#bannerBoxz {
+		min-height: 980px;
+	}
+	.navBoxZ {
+		height: 300px;
+	}
+}
+@media screen and (min-width: 1367px) and (max-width: 1440px) {
+	.bannerBox {
+		margin-top: 250px;
+	}
+	#bannerBoxz {
+		min-height: 1030px;
+	}
+	.navBoxZ {
+		height: 320px;
+	}
+}
+@media screen and (min-width: 1440px) and (max-width: 1539px) {
+	.bannerBox {
+		margin-top: 250px;
+	}
+	#bannerBoxz {
+		min-height: 1080px;
+	}
+	.navBoxZ {
+		height: 370px;
+	}
+}
+@media screen and (min-width: 1540px) and (max-width: 1920px){
+	.bannerBox {
+		margin-top: 320px;
+	}
+	#bannerBoxz {
+		min-height: 1250px;
+	}
+	.navBoxZ {
+		height: 470px;
+	}
+}
+@media screen and (min-width: 1921px) {
+	.bannerBox {
+		margin-top: 350px;
+	}
+	#bannerBoxz {
+		min-height: 1340px;
+	}
+	.navBoxZ {
+		height: 520px;
+	}
+}
 .iPhoneX {
 	position: absolute;
 	left: 0;
@@ -315,15 +381,14 @@
 	z-index: 99;
 	display: block;
 	width: 439px;
-	height: 801px;
 }
 .vison {
 	position: absolute;
 	left: 95px;
-	top: 64px;
+	top: 60px;
 	display: block;
 	width: 300px;
-	height: 656px;
+	border-radius: 40px;
 }
 .Android_down,.ios_down {
 	display: none;
@@ -340,9 +405,6 @@
 	letter-spacing: 4px;
 	text-align: right;
 	color: #222222;
-}
-.onloadPhoneImgBox {
-	padding-top: 7px;
 }
 .onloadPhoneImg {
 	display: block;
@@ -484,7 +546,7 @@
 
 
 .news_1 dt {
-	margin-top: 39px;
+	margin-top: 29px;
 	line-height: 28px;
 	font-size: 22px;
 	color: #222222;
@@ -527,6 +589,7 @@
 	top: 0;
 	left: 0;
 	z-index: 0;
+	width: 100%;
 	min-height: 403px;
 }
 .MDlogo {

@@ -192,9 +192,10 @@ function selectToLogin () {
 function loginAjax (login) {
 	$.ajax({
 		type : 'post',
-		url : URL1 + 'login_jsons.tml',
+		url : URL1 + 'sso/dologin',
 		data : login,
 		dataType : 'json',
+		contentType: 'application/json',
 		cache : false,
 		error : function(data) {
 			console.log(data);

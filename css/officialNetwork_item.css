@@ -1,28 +1,26 @@
 
 .officialNetwork_div_all{
 	width: 1200px;
-	height: 401px;
+	height: 400px;
 	margin: 0 auto;
 }
 .officialNetwork_div_item{
 	width: 1200px;
-	height: 401px;
+	height: 400px;
 	background-color: #ffffff;
 	box-shadow: 0px 20px 40px 0px rgba(123, 123, 123, 0.19);
-	border-radius: 8px;
+	border-radius: 10px;
 	margin: 0 auto;
 	margin-top: 54px;
+	cursor: pointer;
 }
 .officialNetwork_div_first{
 	margin-top: 0;
 }
 .officialNetwork_p_title{
-	width: 183px/;
+	width: 183px;
 	height: 24px;
-	font-family: MicrosoftYaHei;
 	font-size: 24px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 36px;
 	letter-spacing: 0px;
 	color: #222222;
@@ -43,14 +41,12 @@
 	background: #ffffff;
 	float: left;
 	position: relative;
+	border-radius: 0px 10px 10px 0px;
 }
 .officialNetwork_p_name{
 	/*width: 100%;*/
 	height: 34px;
-	font-family: MicrosoftYaHei;
 	font-size: 28px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 36px;
 	letter-spacing: 0px;
 	color: #222222;
@@ -60,10 +56,7 @@
 .officialNetwork_p_content{
 	width: 432px;
 	height: 60px;
-	font-family: MicrosoftYaHei;
 	font-size: 18px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 36px;
 	letter-spacing: 0px;
 	color: #555555;
@@ -72,13 +65,10 @@
 }
 .officialNetwork_p_time{
 	height: 22px;
-	font-family: MicrosoftYaHei;
 	font-size: 16px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 36px;
 	letter-spacing: 0px;
-	color: #444444;
+	color: #777777;
 /*	margin-left: 38px;*/
 	position: absolute;
 	margin-left: 38px;

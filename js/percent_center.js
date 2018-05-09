@@ -7,6 +7,7 @@ $(function(){
 		type: 'post',
 		url: URL1 + 'query_personal_info_jsons.tml',
 		data: percent_data,
+		contentType: 'application/json',
 		dataType: 'json',
 		cache: false,
 		success: function(data) {

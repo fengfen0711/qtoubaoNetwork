@@ -21,8 +21,9 @@ $(function(){
 		function quitAjax (data) {
 			$.ajax({
 				type : 'post',
-				url : URL1 + 'logout_jsons.tml',
+				url : URL1 + 'sso/dologout',
 				data : data,
+				contentType: 'application/json',
 				dataType : 'json',
 				cache : false,
 				error : function(data) {
@@ -60,19 +61,7 @@ $(function(){
 		})
 	})
 	$('.footerZ').load('com.html #footer',function(){
-	//nav 
-		$(".navInfo li").mouseover(function(){
-			$(this).addClass("navInfoLi");
-			$(this).siblings().removeClass("navInfoLi");
-			$(this).find("span.borderBottom").addClass("borderBottomSpan");
-			$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
-		})
-		$(".navInfo li").mouseout(function(){
-			setTimeout(function() {
-				$(this).removeClass("navInfoLi");
-				$(this).find("span.borderBottom").removeClass("borderBottomSpan");
-			}, 400)
-		})
+	
 	})
 	$('.button').on('click',function(){
 		if(nameblur()==true&&cardBlur()==true&&phoneBlur()==true&&emailBlur()==true&&nameblur1()==true&&cardBlur1()==true&&phoneBlur1()==true&&addresBlur()==true){
@@ -195,19 +184,21 @@ $(function(){
 		  "prodName":"超值旅游险",
 		  "orderType":"0",
 		  "orderDate":oDate.getTime(),
-		  "premium":"1",
+		  "premium":sessionStorage.getItem("intotalHtml"),
 		  "orderCode":window.sessionStorage.userId
 		}
 		console.log($('.end').val())
 		var data=JSON.stringify(str)
-		 console.log(data)
+		console.log(data)
 		$.ajax({
-			url:URL1+'save_web_prod_jsons.tml',
+			url: URL1 + 'cnt/order/save',
 			type:"POST",
 			data:data,
+			contentType: 'application/json',
 			success:function(res){
 				if(res.code="SYS_S_000"){
 					window.location.href="success.html"
+					sessionStorage.removeItem("intotalHtml")
 				}
 			},
 			error:function(){
@@ -215,4 +206,35 @@ $(function(){
 			}
 		})
 	}
+	
+	function tab(date1,date2){
+	    var oDate1 = new Date(date1);
+	    var oDate2 = new Date(date2);
+	    if(oDate1.getTime() > oDate2.getTime()){
+	        var time1 = oDate1.getTime() - oDate2.getTime()
+	        var time11 = Math.floor(time1/86400000)+1
+	        console.log(time11)
+	        return time11;
+	    } else {
+	        var time2 = oDate2.getTime() - oDate1.getTime()
+	        var time22 = Math.floor(time2/86400000)+1
+	        console.log(time22)
+	        return time22;
+	    }
+	}
+	$(".begin").change(function(){
+		if ($(".begin").val() != "" && $(".end").val() != "") {
+			var intotalHtml = tab($(".begin").val(),$(".end").val());
+			$(".intotal").html(intotalHtml)
+			sessionStorage.setItem("intotalHtml",intotalHtml)
+		}
+	})
+	$(".end").change(function(){
+		if ($(".begin").val() != "" && $(".end").val() != "") {
+			var intotalHtml = tab($(".begin").val(),$(".end").val());
+			$(".intotal").html(intotalHtml)
+			sessionStorage.setItem("intotalHtml",intotalHtml)
+		}
+	})
+	
 })

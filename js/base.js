@@ -1,10 +1,10 @@
 //接口地址
 //开发
-//var URL1 = "http://192.168.171.12:9000/insd/";
+//var URL1 = "http://192.168.171.12:9002/";
 //测试
-//var URL1 = "http://58.132.205.171:9000/insd/";
+var URL1 = "http://192.168.171.16:9002/";
 //生产
-var URL1 = "http://lb.qtoubao.cn:9000/insd/"
+//var URL1 = "http://lb.qtoubao.cn:9000/insd/"
 
 var deviceWidth = document.documentElement.clientWidth;
 
@@ -17,7 +17,6 @@ $(function () {
 	        if (r != null) return unescape(r[2]); return null;
 	    }
 	})(jQuery);
-	
 	//判断是否是登录状态
 	if (sessionStorage.getItem("regTel")) {
 		console.log(sessionStorage.getItem("regTel"))
@@ -58,9 +57,10 @@ $(function () {
 function quitAjax (data) {
 	$.ajax({
 		type : 'post',
-		url : URL1 + 'logout_jsons.tml',
+		url : URL1 + 'sso/dologout',
 		data : data,
 		dataType : 'json',
+		contentType: 'application/json',
 		cache : false,
 		error : function(data) {
 			console.log(data);

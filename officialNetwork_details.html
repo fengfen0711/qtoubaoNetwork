@@ -3,6 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>详情</title>
+		<link rel="shortcut icon" href="img/ico.png" >
+		<link rel="bookmark" href="img/ico.png">
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="css/officialNetwork_details.css"/>
 		<link rel="stylesheet" type="text/css" href="css/com.css"/>
@@ -67,9 +69,10 @@
 					function quitAjax (data) {
 						$.ajax({
 							type : 'post',
-							url : URL1 + 'logout_jsons.tml',
+							url : URL1 + 'sso/dologout',
 							data : data,
 							dataType : 'json',
+							contentType: 'application/json',
 							cache : false,
 							error : function(data) {
 								console.log(data);
@@ -105,19 +108,7 @@
 					})
 				})
 				$('.footerZ').load('com.html #footer',function(){
-				//nav 
-					$(".navInfo li").mouseover(function(){
-						$(this).addClass("navInfoLi");
-						$(this).siblings().removeClass("navInfoLi");
-						$(this).find("span.borderBottom").addClass("borderBottomSpan");
-						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
-					})
-					$(".navInfo li").mouseout(function(){
-						setTimeout(function() {
-							$(this).removeClass("navInfoLi");
-							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
-						}, 400)
-					})
+					
 				})
 			})
 		</script>

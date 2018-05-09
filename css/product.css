@@ -41,6 +41,7 @@
 	text-align: center;
 	line-height: 76px;
 	font-size: 30px;
+	cursor: pointer;
 }
 .circle{
 	width: 100%;

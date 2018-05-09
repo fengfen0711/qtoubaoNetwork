@@ -2,7 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>订单详情</title>
+		<link rel="shortcut icon" href="img/ico.png" >
+		<link rel="bookmark" href="img/ico.png">
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" type="text/css" href="css/com.css"/>
 		<link rel="stylesheet" type="text/css" href="css/order.css"/>
@@ -82,8 +84,9 @@
 					function quitAjax (data) {
 						$.ajax({
 							type : 'post',
-							url : URL1 + 'logout_jsons.tml',
+							url : URL1 + 'sso/dologout',
 							data : data,
+							contentType: 'application/json',
 							dataType : 'json',
 							cache : false,
 							error : function(data) {
@@ -93,6 +96,7 @@
 								console.log(data);
 								sessionStorage.removeItem("regTel")
 								sessionStorage.removeItem("token")
+								sessionStorage.removeItem("userId")
 								$(".userPhone").html("");
 								$(".navInfo2").addClass("disnone");
 								$(".navInfo1").removeClass("disnone");
@@ -120,19 +124,7 @@
 					})
 				})
 				$('.footerZ').load('com.html #footer',function(){
-				//nav 
-					$(".navInfo li").mouseover(function(){
-						$(this).addClass("navInfoLi");
-						$(this).siblings().removeClass("navInfoLi");
-						$(this).find("span.borderBottom").addClass("borderBottomSpan");
-						$(this).siblings().find("span.borderBottom").removeClass("borderBottomSpan");
-					})
-					$(".navInfo li").mouseout(function(){
-						setTimeout(function() {
-							$(this).removeClass("navInfoLi");
-							$(this).find("span.borderBottom").removeClass("borderBottomSpan");
-						}, 400)
-					})
+				
 				})
 				function getdatalist(){
 					var str={
@@ -141,7 +133,7 @@
 					var data=JSON.stringify(str)
 					 console.log(data)
 					$.ajax({
-						url:URL1+'query_web_prod_detail_jsons.tml',
+						url:URL1+'cnt/order/query',
 						type:"POST",
 						data:data,
 						success:function(res){

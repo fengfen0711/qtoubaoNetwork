@@ -1,22 +1,15 @@
 .officialNetwork_my_img_title{
+	display: inline-block;
 	width: 100%;
-	height: 400px;
-	background-color: #ffffff;
-
 }
 .officialNetwork_my_div_all{
 	width: 100%;
-	/*background: #bfbfbf;;*/
 }
 .officialNetwork_my_p_title{
 	width: 100%;
 	height: 35px;
-	font-family: MicrosoftYaHei;
 	font-size: 36px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 20px;
-	letter-spacing: 0px;
 	color: #333333;
 	text-align: center;
 	margin-top: 52px;
@@ -30,12 +23,8 @@
 .officialNetwork_my_p_new{
 	/*width: 1198px;*/
 	height: 35px;
-	font-family: MicrosoftYaHei;
 	font-size: 36px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 20px;
-	letter-spacing: 0px;
 	color: #333333;
 	text-align: center;
 	/*margin-bottom: 55px;*/
@@ -48,12 +37,8 @@
 .officialNetwork_my_p_content{
 	width: 699px;
 	height: 420px;
-	font-family: MicrosoftYaHei;
 	font-size: 24px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 44px;
-	letter-spacing: 0px;
 	color: #222222;
 	display: inline-block;
 	float: left;
@@ -76,10 +61,7 @@
 .officialNetwork_my_p_new{
 	width: 144px;
 	height: 35px;
-	font-family: MicrosoftYaHei;
 	font-size: 36px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 20px;
 	letter-spacing: 0px;
 	color: #333333;
@@ -106,13 +88,6 @@
 	margin-top: 32px;
 	height: 378px;
 }
-.officialNetwork_my_div_cent_itemleft {
-	width: 301px;
-	height: 212px;
-	/*background-color: #ffffff;
-	box-shadow: 0px 15px 55px 4px rgba(0, 0, 0, 0.3);
-	border-radius: 6px;*/
-}
 .officialNetwork_my_div_cent_itemcent{
 	width: 301px;
 	height: 212px;
@@ -126,13 +101,11 @@
 .officialNetwork_my_div_all_new{
 	width: 301px;
 	float: left;
+	cursor: pointer;
 }
 .officialNetwork_my_p_name{
 	height: 22px;
-	font-family: MicrosoftYaHeiLight;
 	font-size: 22px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 20px;
 	letter-spacing: 0px;
 	color: #222222;
@@ -140,10 +113,7 @@
 }
 .officialNetwork_my_p_namecontent{
 	height: 17px;
-	font-family: MicrosoftYaHeiLight;
 	font-size: 16px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 20px;
 	letter-spacing: 0px;
 	color: #666666;
@@ -152,10 +122,7 @@
 .officialNetwork_my_p_add{
 	width: 100%;
 	height: 14px;
-	font-family: MicrosoftYaHei;
 	font-size: 14px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 20px;
 	letter-spacing: 0px; 
 	color: #eb6067;
@@ -166,10 +133,7 @@
 .officialNetwork_my_p_addnew{
 	width: 100%;
 	height: 14px;
-	font-family: MicrosoftYaHei;
 	font-size: 14px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 20px;
 	letter-spacing: 0px; 
 	color: #eb6067;
@@ -210,10 +174,7 @@
 .officialNetwork_my_p_delname{
 	/*width: 430px;*/
 	height: 36px;
-	font-family: MicrosoftYaHei;
 	font-size: 36px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 20px;
 	letter-spacing: 0px;
 	color: #333333;
@@ -223,10 +184,7 @@
 .officialNetwork_my_p_deladd{
 	width: 422px;
 	height: 55px;
-	font-family: MicrosoftYaHei;
 	font-size: 24px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 30px;
 	letter-spacing: 0px;
 	color: #666666;
@@ -235,10 +193,7 @@
 }
 .officialNetwork_my_p_deldel{
 	height: 24px;
-	font-family: MicrosoftYaHei;
 	font-size: 24px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 30px;
 	letter-spacing: 0px;
 	color: #666666;
@@ -247,10 +202,7 @@
 }
 .officialNetwork_my_p_deeml{
 	height: 27px;
-	font-family: MicrosoftYaHei;
 	font-size: 24px;
-	font-weight: normal;
-	font-stretch: normal;
 	line-height: 30px;
 	letter-spacing: 0px;
 	color: #666666;
