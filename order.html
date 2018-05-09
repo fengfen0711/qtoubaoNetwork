@@ -136,6 +136,7 @@
 						url:URL1+'cnt/order/query',
 						type:"POST",
 						data:data,
+						contentType: 'application/json',
 						success:function(res){
 							var data=res.output;
 							console.log(data)
